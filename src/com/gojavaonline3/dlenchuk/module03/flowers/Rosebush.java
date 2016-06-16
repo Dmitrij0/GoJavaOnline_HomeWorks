@@ -3,6 +3,7 @@ package com.gojavaonline3.dlenchuk.module03.flowers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by DLenchuk on 26.05.2016.
@@ -80,12 +81,13 @@ public class Rosebush {
         return roses;
     }
 
+    public Rosebush transplant() {
+        return new Rosebush(this.color, this.smelled);
+    }
+
     @Override
     public String toString() {
-        return "Rosebush{" +
-                "color=" + color +
-                ", smelled=" + smelled +
-                ", roses=" + roses +
-                '}';
+        return String.format("|%-10s|%-8s|%5d|", color, smelled, roses.size());
     }
+
 }
