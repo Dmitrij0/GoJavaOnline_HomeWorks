@@ -6,7 +6,7 @@ import java.util.Date;
 
 public interface Observer<T extends Number & Comparable<T>> {
 
-    default StringBuilder generateLine(SimpleList<T> list) {
+    default StringBuilder buildLine(SimpleList<T> list) {
         final StringBuilder stringBuilder = new StringBuilder(new Date() + ": [");
         list.forEach(item -> stringBuilder.append(item).append(", "));
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());

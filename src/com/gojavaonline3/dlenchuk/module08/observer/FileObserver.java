@@ -3,7 +3,6 @@ package com.gojavaonline3.dlenchuk.module08.observer;
 import com.gojavaonline3.dlenchuk.module05.lists.SimpleList;
 
 import java.io.*;
-import java.util.Iterator;
 
 /**
  * File observer
@@ -24,7 +23,7 @@ public class FileObserver<T extends Number & Comparable<T>> implements Observer<
     @Override
     public void update(SimpleList<T> list) {
         try {
-            writer.write(generateLine(list).toString());
+            writer.write(buildLine(list).toString());
             writer.flush();
         } catch (IOException e) {
             System.out.println("The File Writer " + fileName + " is crashed");;
