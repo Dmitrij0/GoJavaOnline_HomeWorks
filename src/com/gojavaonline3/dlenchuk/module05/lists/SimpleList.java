@@ -14,6 +14,8 @@ public interface SimpleList<T extends Number & Comparable<T>> extends Iterable<T
 
     public void add(int index, T item);
 
+    public void add(T[] list);
+
     public boolean remove(T item);
 
     public T remove(int index);

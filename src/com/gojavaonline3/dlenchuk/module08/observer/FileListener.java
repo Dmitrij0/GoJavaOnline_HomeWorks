@@ -10,19 +10,17 @@ import java.io.*;
  * @author Dmitrij Lenchuk
  * @since 17.06.2016.
  */
-public class FileObserver<T extends Number & Comparable<T>> implements Observer<T> {
+public class FileListener<T extends Number & Comparable<T>> implements Listener<T> {
 
-    private FileWriter writer;
     private String fileName;
 
-    public FileObserver(String fileName) throws IOException {
+    public FileListener(String fileName) throws IOException {
         this.fileName = fileName;
-        writer = new FileWriter(fileName);
     }
 
     @Override
     public void update(SimpleList<T> list) {
-        try {
+        try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(buildLine(list).toString());
             writer.flush();
         } catch (IOException e) {

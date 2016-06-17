@@ -1,11 +1,11 @@
 package com.gojavaonline3.dlenchuk.module08.observer;
 
-public interface ObservableList<U extends Observer> {
+public interface ObservableList<U extends Listener> {
 
-    public boolean addObserver(U observer);
+    public boolean addListener(U listener);
 
-    public boolean removeObserver(U observer);
+    public boolean removeListener(U listener);
 
-    public void notifyAllObservers();
+    public void notifyAllListeners();
 
 }

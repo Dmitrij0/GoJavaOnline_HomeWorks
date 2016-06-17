@@ -10,7 +10,11 @@ import java.util.Iterator;
 public class SimpleArrayList<T extends Number & Comparable<T>> implements SimpleList<T> {
 
     private T[] list;
+
     private boolean sorted = false;
+
+    public SimpleArrayList() {
+    }
 
     public SimpleArrayList(T[] list) {
         if (list == null || list.length == 0) {
@@ -55,6 +59,17 @@ public class SimpleArrayList<T extends Number & Comparable<T>> implements Simple
         System.arraycopy(this.list, index, list, index + 1, countForShifting);
         list[index] = item;
         this.list = list;
+    }
+
+    @Override
+    public void add(T[] list) {
+        if (length() == 0) {
+            this.list = list;
+        } else {
+            T[] extendedList = Arrays.copyOf(this.list, length() + list.length);
+            System.arraycopy(list, 0, extendedList, length(), list.length);
+            this.list = extendedList;
+        }
     }
 
     @Override

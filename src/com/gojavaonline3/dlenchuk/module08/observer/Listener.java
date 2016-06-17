@@ -4,7 +4,7 @@ import com.gojavaonline3.dlenchuk.module05.lists.SimpleList;
 
 import java.util.Date;
 
-public interface Observer<T extends Number & Comparable<T>> {
+public interface Listener<T extends Number & Comparable<T>> {
 
     default StringBuilder buildLine(SimpleList<T> list) {
         final StringBuilder stringBuilder = new StringBuilder(new Date() + ": [");
