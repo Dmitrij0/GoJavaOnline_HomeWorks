@@ -55,7 +55,7 @@ public class ObservableArrayList<T extends Number & Comparable<T>, U extends Obs
 
     @Override
     public boolean addObserver(U observer) {
-        return false;
+        return observers.add(observer);
     }
 
     @Override
