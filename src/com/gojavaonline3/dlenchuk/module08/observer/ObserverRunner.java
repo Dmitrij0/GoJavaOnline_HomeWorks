@@ -17,7 +17,8 @@ public class ObserverRunner {
         }
         Set<Observer<Integer>> observers = new HashSet<>();
         observers.add(new ConsoleObserver<Integer>());
-        observers.add(new FileObserver<Integer>("tmp.log"));
+        final Observer<Integer> fileObserver = new FileObserver<>("tmp.log");
+        observers.add(fileObserver);
 
         System.out.println("Creating the Observerable Array List...");
         ObservableArrayList<Integer, Observer<Integer>> frame = new ObservableArrayList<Integer, Observer<Integer>>(list, observers);
@@ -45,9 +46,13 @@ public class ObserverRunner {
         System.out.println("Adding element '3333' to the end...");
         frame.add(3333);
 
+        frame.removeObserver(fileObserver);
+
         System.out.println();
         System.out.println("Removing element from the position '2'...");
         frame.remove(2);
+
+        frame.addObserver(fileObserver);
 
         System.out.println();
         System.out.println("Removing element '3333'...");
