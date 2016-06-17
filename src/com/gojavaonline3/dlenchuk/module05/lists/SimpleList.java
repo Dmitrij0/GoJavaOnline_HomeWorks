@@ -8,28 +8,30 @@ import java.util.Iterator;
  */
 public interface SimpleList<T extends Number & Comparable<T>> extends Iterable<T> {
 
-    public int indexOf(T Item);
+    T[] getList();
 
-    public boolean add(T item);
+    int indexOf(T Item);
 
-    public void add(int index, T item);
+    boolean add(T item);
 
-    public void add(T[] list);
+    void add(int index, T item);
 
-    public boolean remove(T item);
+    void add(T[] list);
 
-    public T remove(int index);
+    boolean remove(T item);
 
-    public int length();
+    T remove(int index);
 
-    public SimpleList<T> bubbleSort();
+    int length();
 
-    public SimpleList<T> mergeSort();
+    SimpleList<T> bubbleSort();
 
-    public T min();
+    SimpleList<T> mergeSort();
 
-    public T max();
+    T min();
 
-    public Iterator<T> iterator();
+    T max();
+
+    Iterator<T> iterator();
 
 }

@@ -22,6 +22,12 @@ public class ObservableArrayList<T extends Number & Comparable<T>, U extends Lis
     }
 
     @Override
+    protected void setList(T[] list) {
+        super.setList(list);
+        notifyAllListeners();
+    }
+
+    @Override
     public boolean add(T item) {
         boolean result = super.add(item);
         notifyAllListeners();
@@ -56,14 +62,16 @@ public class ObservableArrayList<T extends Number & Comparable<T>, U extends Lis
 
     @Override
     public SimpleList<T> bubbleSort() {
-        list = super.bubbleSort();
+        SimpleList<T> list = super.bubbleSort();
+        super.setList(list.getList());
         notifyAllListeners();
         return list;
     }
 
     @Override
     public SimpleList<T> mergeSort() {
-        list = super.mergeSort();
+        SimpleList<T> list = super.mergeSort();
+        super.setList(list.getList());
         notifyAllListeners();
         return list;
     }
