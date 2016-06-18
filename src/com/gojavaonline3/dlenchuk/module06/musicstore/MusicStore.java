@@ -87,7 +87,7 @@ public class MusicStore {
         System.out.println("Concert is finished...");
     }
 
-    public List<MusicalInstrument> prepareInstruments(Map<String, Integer> order) throws GoodException {
+    List<MusicalInstrument> prepareInstruments(Map<String, Integer> order) throws GoodException {
         checkGoods(order);
         List<MusicalInstrument> resultList = new ArrayList<>();
 
