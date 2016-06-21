@@ -2,9 +2,18 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 
 import java.util.*;
 
-public abstract class SimpleMap<K, V> implements Map<K, V> {
+public abstract class SimpleMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     private Set<Entry<K, V>> items;
+
+    public SimpleMap() {
+        clear();
+    }
+
+    public SimpleMap(Map<K, V> map) {
+        this();
+        putAll(map);
+    }
 
     @Override
     public int size() {
@@ -19,7 +28,9 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public boolean containsKey(Object key) {
-        return items.contains(new Item<K, V>((K)key, null));
+        return items
+                .stream()
+                .filter(item -> item.getKey().equals((K)key)).count() != 0;
     }
 
     @Override
@@ -35,11 +46,11 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V get(Object key) {
-        final Entry<K, V> item = find((K) key);
+        final Entry<K, V> item = findEntry((K) key);
         return item == null ? null : item.getValue();
     }
 
-    public Entry<K, V> find(K key) {
+    public Entry<K, V> findEntry(K key) {
         try {
             return items
                     .stream()
@@ -52,7 +63,7 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public V put(K key, V value) {
-        Entry<K, V> item = this.find(key);
+        Entry<K, V> item = this.findEntry(key);
         V result = null;
         if (item == null) {
             items.add(new Item<>(key, value));
@@ -67,7 +78,13 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
         V result = this.get(key);
-        return items.remove(this.find((K)key)) ? result : null;
+        Entry<K, V> entry = this.findEntry((K) key);
+        if (entry == null) {
+            return null;
+        } else {
+            items.remove(entry);
+            return result;
+        }
     }
 
     @Override
@@ -85,14 +102,6 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     @SuppressWarnings("NullableProblems")
-    public Set<K> keySet() {
-        Set<K> keySet = new HashSet<>();
-        items.forEach(item -> keySet.add(item.getKey()));
-        return keySet;
-    }
-
-    @Override
-    @SuppressWarnings("NullableProblems")
     public Collection<V> values() {
         List<V> values = new ArrayList<>();
         items.forEach(item -> values.add(item.getValue()));
@@ -107,10 +116,10 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public String toString() {
-        return "SimpleHashMap" + items;
+        return this.getClass().getSimpleName() + items;
     }
 
-    private class Item<KI, VI> implements Entry<KI, VI> {
+    protected class Item<KI extends Comparable<KI>, VI> implements Entry<KI, VI>, Comparable<Entry<KI, VI>> {
 
         private final KI key;
         private VI value;
@@ -154,6 +163,15 @@ public abstract class SimpleMap<K, V> implements Map<K, V> {
         @Override
         public String toString() {
             return "{" + key + ", " + value + '}';
+        }
+
+        @Override
+        @SuppressWarnings("NullableProblems")
+        public int compareTo(Entry<KI, VI> that) {
+            if (that == null) return -1;
+            if (this == that) return 0;
+
+            return this.getKey().compareTo(that.getKey());
         }
     }
 }

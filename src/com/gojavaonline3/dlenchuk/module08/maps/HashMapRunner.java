@@ -3,7 +3,7 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class MapRunner {
+public class HashMapRunner {
 
     public static void main(String[] args) {
         Map<String, Integer> hashMap = new SimpleHashMap<>();
@@ -28,8 +28,8 @@ public class MapRunner {
         System.out.println("hashMap.isEmpty() == " + hashMap.isEmpty());
 
         System.out.println();
-        System.out.println("hashMap.find(\"30\") == " + ((SimpleHashMap<String, Integer>) hashMap).find("30"));
-        System.out.println("hashMap.find(\"333\") == " + ((SimpleHashMap<String, Integer>)hashMap).find("333"));
+        System.out.println("hashMap.findEntry(\"30\") == " + ((SimpleHashMap<String, Integer>) hashMap).findEntry("30"));
+        System.out.println("hashMap.findEntry(\"333\") == " + ((SimpleHashMap<String, Integer>)hashMap).findEntry("333"));
 
         System.out.println();
         System.out.println("hashMap.containsKey(\"30\") == " + hashMap.containsKey("30"));
