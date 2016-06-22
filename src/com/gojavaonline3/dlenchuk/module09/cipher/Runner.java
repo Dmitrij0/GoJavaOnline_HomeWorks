@@ -10,7 +10,7 @@ public class Runner {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) throws CloneNotSupportedException, IllegalAccessException {
         Greenhouse greenhouse = new Greenhouse(new Rosebush(Color.RED, true), 100, 100);
 
 //        Cipher encoder = (ch, shift, norma, power) -> (char) ((ch - norma + shift) % power + norma);
@@ -19,6 +19,8 @@ public class Runner {
 
         System.out.println("Please, enter a shift of the algorithm: ");
         int shift = scanner.nextInt();
+        if (shift < 0 || shift > 10)
+            throw new IllegalAccessException("The shift must be in the range [0, 10]");
 
         System.out.println();
         System.out.println("The original string is: ");
