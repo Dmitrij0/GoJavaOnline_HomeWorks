@@ -23,18 +23,11 @@ class Caesar{
     }
 
     private int power(char ch) {
-        int result = 0;
-        if (Character.isUpperCase(ch)) {
-            result = POWER_ALGORITHM_OF_LETTERS;
-        } else if (Character.isLowerCase(ch)) {
-            result = POWER_ALGORITHM_OF_LETTERS;
-        } else if (Character.isDigit(ch)) {
-            result = POWER_ALGORITHM_OF_DIGITS;
-        }
-        return result;
+        return Character.isLowerCase(ch) || Character.isUpperCase(ch) ? POWER_ALGORITHM_OF_LETTERS :
+                Character.isDigit(ch) ? POWER_ALGORITHM_OF_DIGITS : /*NRS*/0;
     }
 
-    public String execute(Cipher cipher, String value, int shift) {
+    String execute(Cipher cipher, String value, int shift) {
         StringBuilder result = new StringBuilder(value);
         for (int i = 0; i < result.length(); i++) {
             char ch = result.charAt(i);
@@ -43,7 +36,6 @@ class Caesar{
             }
             int norma = norma(ch);
             int power = power(ch);
-//            ch = (char)((ch - norma + shift) % power + norma);
             result.setCharAt(i, cipher.transform(ch, shift, norma, power));
         }
         return result.toString();
