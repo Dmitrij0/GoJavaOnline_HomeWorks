@@ -38,7 +38,7 @@ public class BouquetOfFlowers {
     @Override
     public String toString() {
         return "BouquetOfFlowers{" +
-                "flowers=" + flowers +
+                "cipher=" + flowers +
                 '}';
     }
 }

@@ -37,7 +37,7 @@ public class Greenhouse {
      *  @param countOfRosebushes Count of rosebushes in the greenhouse
      *  @param countOfDays Count of days
      * */
-    Greenhouse(Rosebush rosebush, int countOfRosebushes, int countOfDays) throws CloneNotSupportedException {
+    public Greenhouse(Rosebush rosebush, int countOfRosebushes, int countOfDays) throws CloneNotSupportedException {
         add(rosebush, countOfRosebushes);
         grow(countOfDays);
     }
@@ -95,4 +95,16 @@ public class Greenhouse {
         rosebushes.forEach(System.out::println);
     }
 
+    @Override
+    public String toString() {
+        String result = "";
+        for (Rosebush rosebush : rosebushes) {
+            result += rosebush.toString() + '\n';
+        }
+        return "The rosebushes of the greenhouse\n" +
+               "---------------------------\n" +
+               String.format("|%-10s|%-8s|%-5s|", "color", "smelled", "roses") +'\n' +
+               "---------------------------\n" +
+                result;
+    }
 }
