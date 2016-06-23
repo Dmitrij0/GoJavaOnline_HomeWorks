@@ -35,7 +35,7 @@ public class CaesarReader extends Reader {
         synchronized (lock) {
             ensureOpen();
             int countChar = in.read(cbuf, off, len);
-            cbuf = caesar.execute(CaesarDecoder::transform, cbuf);
+            caesar.execute(CaesarDecoder::transform, cbuf);
             return countChar;
         }
     }

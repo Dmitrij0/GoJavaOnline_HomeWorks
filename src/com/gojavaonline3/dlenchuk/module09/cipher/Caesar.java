@@ -50,15 +50,14 @@ public class Caesar{
     }
 
     public char[] execute(Cipher cipher, char[] value) {
-        char[] result = new char[value.length];
-        for (int i = 0; i < result.length; i++) {
+        for (int i = 0; i < value.length; i++) {
             char ch = value[i];
             if (!Character.isUpperCase(ch) && !Character.isLowerCase(ch) && !Character.isDigit(ch)) {
                 continue;
             }
             int norma = norma(ch);
             int power = power(ch);
-            result[i] = cipher.transform(ch, getShift(), norma, power);
+            value[i] = cipher.transform(ch, getShift(), norma, power);
         }
         return value;
     }
