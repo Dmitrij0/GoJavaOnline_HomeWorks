@@ -27,7 +27,7 @@ public class Runner {
         System.out.println(greenhouse.toString());
 
 //        String encodedString = caesar.execute(encoder, greenhouse.toString(), shift);
-        String encodedString = caesar.execute(CaesarEncoder::transform, greenhouse.toString(), shift);
+        String encodedString = caesar.execute(CaesarEncoder::transform, greenhouse.toString());
 
         System.out.println();
         System.out.println("The encoded string is: ");
@@ -35,7 +35,7 @@ public class Runner {
 
 
 //        String decodedString = caesar.execute(decoder, encodedString, shift);
-        String decodedString = caesar.execute(CaesarDecoder::transform, encodedString, shift);
+        String decodedString = caesar.execute(CaesarDecoder::transform, encodedString);
 
         System.out.println();
         System.out.println("The decoded string is: ");

@@ -6,7 +6,7 @@ package com.gojavaonline3.dlenchuk.module09.cipher;
  * @author Dmitrij Lenchyk
  * @since 22.06.2016
  * */
-interface Cipher {
+public interface Cipher {
 
     /**Char transformation
      *

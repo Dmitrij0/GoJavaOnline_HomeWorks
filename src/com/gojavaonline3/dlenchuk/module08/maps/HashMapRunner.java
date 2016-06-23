@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class HashMapRunner {
 
     public static void main(String[] args) {
-        Map<String, Integer> hashMap = new SimpleHashMap<>();
+        Map<String, Integer> hashMap = new DelegateSimpleHashMap<>();
 
         System.out.println("hashMap.size() == " + hashMap.size());
         System.out.println("hashMap.isEmpty() == " + hashMap.isEmpty());
@@ -28,8 +28,8 @@ public class HashMapRunner {
         System.out.println("hashMap.isEmpty() == " + hashMap.isEmpty());
 
         System.out.println();
-        System.out.println("hashMap.findEntry(\"30\") == " + ((SimpleHashMap<String, Integer>) hashMap).findEntry("30"));
-        System.out.println("hashMap.findEntry(\"333\") == " + ((SimpleHashMap<String, Integer>)hashMap).findEntry("333"));
+        System.out.println("hashMap.findEntry(\"30\") == " + ((DelegateSimpleHashMap<String, Integer>) hashMap).findEntry("30"));
+        System.out.println("hashMap.findEntry(\"333\") == " + ((DelegateSimpleHashMap<String, Integer>)hashMap).findEntry("333"));
 
         System.out.println();
         System.out.println("hashMap.containsKey(\"30\") == " + hashMap.containsKey("30"));

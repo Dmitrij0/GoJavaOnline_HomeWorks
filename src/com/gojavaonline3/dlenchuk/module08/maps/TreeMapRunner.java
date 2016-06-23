@@ -3,12 +3,11 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class TreeMapRunner {
 
     public static void main(String[] args) {
-        NavigableMap<String, Integer> treeMap = new SimpleTreeMap<>();
+        NavigableMap<String, Integer> treeMap = new DelegateSimpleTreeMap<>();
 
         System.out.println("treeMap.size() == " + treeMap.size());
         System.out.println("treeMap.isEmpty() == " + treeMap.isEmpty());
@@ -30,8 +29,8 @@ public class TreeMapRunner {
         System.out.println("treeMap.isEmpty() == " + treeMap.isEmpty());
 
         System.out.println();
-        System.out.println("treeMap.findEntry(\"30\") == " + ((SimpleTreeMap<String, Integer>) treeMap).findEntry("30"));
-        System.out.println("treeMap.findEntry(\"333\") == " + ((SimpleTreeMap<String, Integer>)treeMap).findEntry("333"));
+        System.out.println("treeMap.findEntry(\"30\") == " + ((DelegateSimpleTreeMap<String, Integer>) treeMap).findEntry("30"));
+        System.out.println("treeMap.findEntry(\"333\") == " + ((DelegateSimpleTreeMap<String, Integer>)treeMap).findEntry("333"));
 
         System.out.println();
         System.out.println("treeMap.containsKey(\"30\") == " + treeMap.containsKey("30"));
