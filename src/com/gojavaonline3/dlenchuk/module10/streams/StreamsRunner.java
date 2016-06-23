@@ -14,9 +14,12 @@ public class StreamsRunner {
 
         System.out.println("Enter the name of an origin file: ");
         String fileName = scanner.nextLine();
+        System.out.println("Enter the name of a new encoded file: ");
+        String newFileName = scanner.nextLine();
+
 
         try (BufferedReader in = new BufferedReader(new FileReader(fileName));
-             BufferedWriter writer = new BufferedWriter(new CaesarWriter(new BufferedWriter(new FileWriter("cipher.txt")), 2))) {
+             BufferedWriter writer = new BufferedWriter(new CaesarWriter(new BufferedWriter(new FileWriter(newFileName)), 2))) {
 
             while ((byteCount = in.read(buffer)) != -1)
                 writer.write(buffer, 0, byteCount);
@@ -28,7 +31,7 @@ public class StreamsRunner {
             throw e;
         }
 
-        try (BufferedReader reader = new BufferedReader(new CaesarReader(new BufferedReader(new FileReader("cipher.txt")), 2))) {
+        try (BufferedReader reader = new BufferedReader(new CaesarReader(new BufferedReader(new FileReader(newFileName)), 2))) {
             while ((byteCount = reader.read(buffer)) != -1)
                 System.out.println(String.valueOf(buffer, 0, byteCount));
         }
