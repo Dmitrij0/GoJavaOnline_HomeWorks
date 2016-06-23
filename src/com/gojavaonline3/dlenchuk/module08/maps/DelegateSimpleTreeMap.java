@@ -2,26 +2,26 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 
 import java.util.*;
 
-public class SimpleTreeMap<K extends Comparable<K>, V>
-        extends SimpleMap<K, V>
+public class DelegateSimpleTreeMap<K extends Comparable<K>, V>
+        extends DelegateSimpleMap<K, V>
         implements NavigableMap<K, V> {
 
     private Comparator<? super K> comparator;
 
-    public SimpleTreeMap() {
+    public DelegateSimpleTreeMap() {
         super();
     }
 
-    public SimpleTreeMap(Comparator<? super K> comparator) {
+    public DelegateSimpleTreeMap(Comparator<? super K> comparator) {
         this();
         this.comparator = comparator;
     }
 
-    public SimpleTreeMap(Map<K, V> map) {
+    public DelegateSimpleTreeMap(Map<K, V> map) {
         super(map);
     }
 
-    public SimpleTreeMap(Map<K, V> map, Comparator<? super K> comparator) {
+    public DelegateSimpleTreeMap(Map<K, V> map, Comparator<? super K> comparator) {
         super(map);
         this.comparator = comparator;
     }
@@ -117,7 +117,7 @@ public class SimpleTreeMap<K extends Comparable<K>, V>
 
     @Override
     public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
-        final NavigableMap<K, V> map = new SimpleTreeMap<>();
+        final NavigableMap<K, V> map = new DelegateSimpleTreeMap<>();
         entrySet()
             .stream()
             .filter(entry ->

@@ -2,7 +2,7 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 
 import java.util.*;
 
-public class SimpleHashMap<K extends Comparable<K>, V> extends SimpleMap<K, V> {
+public class DelegateSimpleHashMap<K extends Comparable<K>, V> extends DelegateSimpleMap<K, V> {
 
     @Override
     protected Set<Entry<K, V>> initItems() {
