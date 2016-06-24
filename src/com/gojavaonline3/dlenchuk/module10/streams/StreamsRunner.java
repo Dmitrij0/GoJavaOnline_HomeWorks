@@ -12,6 +12,9 @@ public class StreamsRunner {
         char[] buffer = new char[8192];
         int byteCount;
 
+        System.out.println("Enter a shift of the Caesar algorithm: ");
+        int shift = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Enter the name of an origin file: ");
         String fileName = scanner.nextLine();
         System.out.println("Enter the name of a new encoded file: ");
@@ -19,19 +22,19 @@ public class StreamsRunner {
 
 
         try (BufferedReader in = new BufferedReader(new FileReader(fileName));
-             BufferedWriter writer = new BufferedWriter(new CaesarWriter(new BufferedWriter(new FileWriter(newFileName)), 2))) {
+             BufferedWriter writer = new BufferedWriter(new CaesarWriter(new BufferedWriter(new FileWriter(newFileName)), shift))) {
 
             while ((byteCount = in.read(buffer)) != -1)
                 writer.write(buffer, 0, byteCount);
 
 
         } catch (IOException e) {
-            if (!new File("cipher.txt").delete())
-                e.addSuppressed(new IOException("Can't delete file 'cipher.txt'"));
+            if (!new File(newFileName).delete())
+                e.addSuppressed(new IOException("Can't delete file '" + newFileName + '\''));
             throw e;
         }
 
-        try (BufferedReader reader = new BufferedReader(new CaesarReader(new BufferedReader(new FileReader(newFileName)), 2))) {
+        try (BufferedReader reader = new BufferedReader(new CaesarReader(new BufferedReader(new FileReader(newFileName)), shift))) {
             while ((byteCount = reader.read(buffer)) != -1)
                 System.out.println(String.valueOf(buffer, 0, byteCount));
         }
