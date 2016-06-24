@@ -7,27 +7,20 @@ import com.gojavaonline3.dlenchuk.module09.cipher.CaesarDecoder;
 import java.io.IOException;
 import java.io.Reader;
 
-public class CaesarReader extends Reader {
+class CaesarReader extends Reader {
 
     private Caesar caesar;
     private Reader in;
-    private int shift;
 
-    public CaesarReader(Reader in, int shift) {
+    CaesarReader(Reader in, int shift) {
         this.in = in;
-        this.shift = shift;
         this.caesar = new Caesar(shift);
     }
 
-    public CaesarReader(Object lock, Reader in, int shift) {
+    CaesarReader(Object lock, Reader in, int shift) {
         super(lock);
         this.in = in;
-        this.shift = shift;
         this.caesar = new Caesar(shift);
-    }
-
-    public int getShift() {
-        return shift;
     }
 
     @Override
