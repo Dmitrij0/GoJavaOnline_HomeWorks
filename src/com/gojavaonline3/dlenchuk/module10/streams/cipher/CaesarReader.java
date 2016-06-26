@@ -1,4 +1,4 @@
-package com.gojavaonline3.dlenchuk.module10.streams;
+package com.gojavaonline3.dlenchuk.module10.streams.cipher;
 
 
 import com.gojavaonline3.dlenchuk.module09.cipher.Caesar;

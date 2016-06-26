@@ -51,13 +51,11 @@ public class TestString {
 
     }
 
-
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
 
         while (true) {
-
 
             for (int i = 0; i < 100; i++) {
                 System.out.println('\b');

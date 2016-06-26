@@ -1,10 +1,11 @@
 package com.gojavaonline3.dlenchuk.module08.maps;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import sun.java2d.pipe.SpanShapeRenderer;
+
+import java.util.*;
 
 public class SimpleMap<K, V> implements Map<K, V> {
+
     @Override
     public int size() {
         return 0;
@@ -64,4 +65,26 @@ public class SimpleMap<K, V> implements Map<K, V> {
     public Set<Entry<K, V>> entrySet() {
         return null;
     }
+
+    private class SimpleNode<K, V> implements Entry<K, V> {
+
+        private K key;
+
+
+        @Override
+        public K getKey() {
+            return null;
+        }
+
+        @Override
+        public V getValue() {
+            return null;
+        }
+
+        @Override
+        public V setValue(V value) {
+            return null;
+        }
+    }
+
 }

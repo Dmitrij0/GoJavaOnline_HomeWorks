@@ -1,4 +1,4 @@
-package com.gojavaonline3.dlenchuk.module10.streams;
+package com.gojavaonline3.dlenchuk.module10.streams.cipher;
 
 import java.io.*;
 import java.util.Scanner;

@@ -206,7 +206,6 @@ public class TreeMapRunner {
         treeMap.clear();
         System.out.println("treeMap.clear() => " + treeMap);
         System.out.println("treeMap.descendingKeySet() == " + treeMap.descendingKeySet());
-
     }
 
 }
