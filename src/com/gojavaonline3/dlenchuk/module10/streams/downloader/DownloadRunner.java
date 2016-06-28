@@ -12,12 +12,14 @@ public class DownloadRunner {
 
     public static void main(String[] args) throws IOException {
 
-        FileListener fileListener = new FileListener("c:/temp/download.log");
+        FileListener fileListener = new FileListener("download.log");
+        ConsoleListener consoleListener = new ConsoleListener();
         try {
             System.out.println("Please, give a link:");
             URL url = new URL(scanner.nextLine());
             Downloader<Listener> downloader = new Downloader<>(url);
             downloader.addListener(fileListener);
+            downloader.addListener(consoleListener);
             Set<LinksExtractor.Link> links = downloader.extractLinks();
 
 

@@ -12,14 +12,12 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
     private File file;
 
     public FileDownloader() {
-        notifyAllListeners("Create Empty File Downloader" + '\n');
     }
 
 
     public FileDownloader(URL url, File file) {
         this.url = url;
         this.file = file;
-        notifyAllListeners("Create File Downloader url = " + url + "; file = " + file + '\n');
     }
 
     public URL getUrl() {
@@ -28,6 +26,7 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
 
     public void setUrl(URL url) {
         this.url = url;
+        notifyAllListeners("Set destination url '" + url + "\'\n");
     }
 
     public File getFile() {
@@ -36,6 +35,7 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
 
     public void setFile(File file) {
         this.file = file;
+        notifyAllListeners("Set destination file '" + file + "\'\n");
     }
 
     public boolean start() {
@@ -45,11 +45,12 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
             OutputStream out = new BufferedOutputStream(new FileOutputStream(getFile()))) {
             int byteCount;
             byte[] buffer = new byte[8192];
-            notifyAllListeners(file + " downloading...\n");
+            notifyAllListeners("'" + getUrl() + "' downloading to '" + file + '\'');
             while ((byteCount = in.read(buffer)) != -1) {
                 out.write(buffer, 0, byteCount);
                 notifyAllListeners(".");
             }
+            notifyAllListeners("\n");
             result = true;
         } catch (IOException e) {
             result = false;

@@ -35,12 +35,14 @@ public class Downloader<L extends Listener> implements ObservableList<L> {
     }
 
     public void prepared() {
-        if (url == null)
+        if (url == null) {
+            notifyAllListeners("URL is not set\n");
             throw new IllegalArgumentException("url == null");
+        }
     }
 
     public Set<LinksExtractor.Link> extractLinks() throws IOException {
-//        try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File("c:\\temp\\First_ex_ua.html"))))) {
+        prepared();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(getUrl().openStream()))) {
             int byteCount;
             char[] buffer = new char[4096];
@@ -56,7 +58,7 @@ public class Downloader<L extends Listener> implements ObservableList<L> {
     }
 
     public List<File> downloadFiles(String matches, String destinationDir) throws IOException {
-        FileDownloader fileDownloader = new FileDownloader();
+        FileDownloader<L> fileDownloader = new FileDownloader<>();
         fileDownloader.addAllListeners(listeners);
         List<File> files = new ArrayList<>();
         int counter = 0;
