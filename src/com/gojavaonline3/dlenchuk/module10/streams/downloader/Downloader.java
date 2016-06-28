@@ -57,6 +57,7 @@ public class Downloader<L extends Listener> implements ObservableList<L> {
 
     public List<File> downloadFiles(String matches, String destinationDir) throws IOException {
         FileDownloader fileDownloader = new FileDownloader();
+        fileDownloader.addAllListeners(listeners);
         List<File> files = new ArrayList<>();
         int counter = 0;
 
@@ -66,14 +67,12 @@ public class Downloader<L extends Listener> implements ObservableList<L> {
         for (LinksExtractor.Link link : links) {
             if (link.getLink().matches(".*" + matches + ".*") || link.getLinkText().matches(".*" + matches + ".*")) {
                 if (link.getLink().charAt(0) == '/') {
-                    fileDownloader.setUrl(new URL(
-                            url.getProtocol() + "://" + url.getHost() + link.getLink()
-                    ));
+                    fileDownloader.setUrl(new URL(url.getProtocol() + "://" + url.getHost() + link.getLink()));
                 } else {
                     fileDownloader.setUrl(new URL(link.getLink()));
                 }
 
-                fileDownloader.setFile(new File(destinationDir + "/file_" + counter + '.' + matches));
+                fileDownloader.setFile(new File(destinationDir + '/' + link.getLinkText()+ '_' + (counter + 1) + '.' + matches));
                 fileDownloader.start();
                 files.add(fileDownloader.getFile());
                 counter++;
