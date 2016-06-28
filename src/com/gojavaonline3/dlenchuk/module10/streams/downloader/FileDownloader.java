@@ -11,6 +11,11 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
     private URL url;
     private File file;
 
+    public FileDownloader() {
+        notifyAllListeners("Create Empty File Downloader" + '\n');
+    }
+
+
     public FileDownloader(URL url, File file) {
         this.url = url;
         this.file = file;
@@ -40,7 +45,7 @@ public class FileDownloader<L extends Listener> implements ObservableList<L> {
             OutputStream out = new BufferedOutputStream(new FileOutputStream(getFile()))) {
             int byteCount;
             byte[] buffer = new byte[8192];
-            notifyAllListeners(file + " downloading...");
+            notifyAllListeners(file + " downloading...\n");
             while ((byteCount = in.read(buffer)) != -1) {
                 out.write(buffer, 0, byteCount);
                 notifyAllListeners(".");
