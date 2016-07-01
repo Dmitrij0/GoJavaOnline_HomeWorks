@@ -1,4 +1,4 @@
-package com.gojavaonline3.dlenchuk.module08.maps;
+package com.gojavaonline3.dlenchuk.module08.delegate_maps;
 
 import java.util.Map;
 import java.util.TreeMap;

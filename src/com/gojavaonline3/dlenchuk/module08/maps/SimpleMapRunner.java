@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class SimpleMapRunner {
     public static void main(String[] args) {
-        SimpleMap<String, Integer> map = new SimpleMap<>();
+        Map<String, Integer> map = new SimpleHashMap<>();
         System.out.println("map.size() = " + map.size());
         System.out.println("map.put(\"Dima\", 39) = " + map.put("Dima", 39));
         System.out.println("map.size() = " + map.size());
-        System.out.println("map.put(\"1111\", 1111) = " + map.put("1111", 1111));;
+        System.out.println("map.put(\"1111\", 1111) = " + map.put("1111", 1111));
         System.out.println("map.size() = " + map.size());
         System.out.println("map.put(null, 40) = " + map.put(null, 40));
         System.out.println("map.size() = " + map.size());

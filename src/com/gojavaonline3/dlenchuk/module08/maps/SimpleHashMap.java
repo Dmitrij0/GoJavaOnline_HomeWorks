@@ -2,7 +2,7 @@ package com.gojavaonline3.dlenchuk.module08.maps;
 
 import java.util.*;
 
-class SimpleMap<K, V> implements Map<K, V> {
+class SimpleHashMap<K, V> implements Map<K, V> {
 
     private static final int DEFAULT_CAPACITY = 16;
     private static final int MAX_BUCKET_SIZE = 8;
@@ -12,7 +12,7 @@ class SimpleMap<K, V> implements Map<K, V> {
     private int size;
     private SimpleNode<K, V>[] table;
 
-    SimpleMap() {
+    SimpleHashMap() {
         table = resize();
     }
 
@@ -174,7 +174,7 @@ class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public V remove(Object key) {
         SimpleNode<K, V>[] table = this.table;
-        SimpleNode<K, V> prevNode = null;
+        SimpleNode<K, V> prevNode;
         @SuppressWarnings("unchecked")
         K inKey = (K) key;
         K currKey;
@@ -229,7 +229,7 @@ class SimpleMap<K, V> implements Map<K, V> {
     @Override
     /*ToDo values() need to entrySet()*/
     public Collection<V> values() {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
@@ -302,7 +302,7 @@ class SimpleMap<K, V> implements Map<K, V> {
     @Override
     /*ToDo toString() need to entrySet()*/
     public String toString() {
-        return "SimpleMap";
+        return "SimpleHashMap";
     }
 
 }
