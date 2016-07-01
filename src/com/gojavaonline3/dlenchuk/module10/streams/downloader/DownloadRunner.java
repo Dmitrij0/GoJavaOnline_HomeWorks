@@ -11,28 +11,19 @@ public class DownloadRunner {
 
     public static void main(String[] args) throws IOException {
 
-        FileListener fileListener = new FileListener(System.getProperty("java.io.tmpdir") + "download.log");
-        ConsoleListener consoleListener = new ConsoleListener();
-        try {
-            System.out.println("Please, give a link:");
-            URL url = new URL(scanner.nextLine());
-            Downloader<Listener> downloader = new Downloader<>(url);
-            downloader.addListener(fileListener);
-            downloader.addListener(consoleListener);
-            Set<LinksExtractor.Link> links = downloader.extractLinks();
+        System.out.println("Please, give a link:");
+        URL url = new URL(scanner.nextLine());
+        Downloader downloader = new Downloader(url);
+        Set<LinksExtractor.Link> links = downloader.extractLinks();
 
+        System.out.println(links.toString());
 
-            System.out.println(links.toString());
+        System.out.println("Please, give a file extension (mp3, avi, pdf, etc...) for downloading:");
+        String regExp = scanner.nextLine();
+        System.out.println("Please, give a destination directory:");
+        String destinationDir = scanner.nextLine();
 
-            System.out.println("Please, give a file extension (mp3, avi, pdf, etc...) for downloading:");
-            String regExp = scanner.nextLine();
-            System.out.println("Please, give a destination directory:");
-            String destinationDir = scanner.nextLine();
-
-            System.out.println(downloader.downloadFiles(regExp, destinationDir).toString().replace(", ", "\n"));
-        } finally {
-            fileListener.writeToFile();
-        }
+        System.out.println(downloader.downloadFiles(regExp, destinationDir).toString().replace(", ", "\n"));
     }
 
 }
