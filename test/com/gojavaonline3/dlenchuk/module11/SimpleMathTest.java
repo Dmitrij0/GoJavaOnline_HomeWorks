@@ -9,18 +9,18 @@ public class SimpleMathTest {
 
     private static SimpleMath simpleMath;
 
-    @BeforeClass
+    //@BeforeClass
     public static void setUpClass() throws Exception {
         simpleMath = new SimpleMath();
         System.out.println("setUpClass() called");
     }
 
-    @Before
+    //@Before
     public void setUp() throws Exception {
         System.out.println("setUp() called");
     }
 
-    @Test(timeout = 3000)
+    //@Test(timeout = 3000)
     public void add() throws Exception {
         System.out.println("Test add() called");
         int a = 5;
@@ -31,7 +31,7 @@ public class SimpleMathTest {
         assertEquals(13, result);
     }
 
-    @Test(timeout = 3000)
+    //@Test(timeout = 3000)
     public void sub() throws Exception {
         System.out.println("Test sub() called");
         final int a = 29;
@@ -42,13 +42,7 @@ public class SimpleMathTest {
         assertEquals(a - b, result);
     }
 
-    @Ignore("mult() not ready yet\n")
-    @Test
-    public void mult() throws Exception {
-
-    }
-
-    @Test(timeout = 3000)
+    //@Test(timeout = 3000)
     public void modulo() throws Exception {
         System.out.println("Test modulo() called");
         final int a = 17;
@@ -59,7 +53,7 @@ public class SimpleMathTest {
         assertEquals(a % b, result);
     }
 
-    @Test(timeout = 3000, expected = UnsupportedOperationException.class)
+    //@Test(timeout = 3000, expected = UnsupportedOperationException.class)
     public void div() throws Exception {
         System.out.println("Test div() called");
         final int a = 17;
@@ -70,12 +64,12 @@ public class SimpleMathTest {
         assertEquals(a / b, result);
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception {
         System.out.println("tearDown called");
     }
 
-    @AfterClass
+    //@AfterClass
     public static void tearDownClass() throws Exception {
         System.out.println("tearDownClass called");
     }

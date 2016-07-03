@@ -1,10 +1,5 @@
 package com.gojavaonline3.dlenchuk.module09;
 
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.PriorityQueue;
-
 public class Test {
 
     public static void main(String[] args) {

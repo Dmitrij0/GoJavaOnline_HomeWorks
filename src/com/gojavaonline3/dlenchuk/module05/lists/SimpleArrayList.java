@@ -89,8 +89,9 @@ public class SimpleArrayList<T extends Number & Comparable<T>> implements Simple
 
     @Override
     public boolean remove(T item) {
-        remove(indexOf(item));
-        return false;
+        int index = indexOf(item);
+        remove(index);
+        return index >= 0;
     }
 
     @Override

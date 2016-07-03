@@ -32,11 +32,11 @@ public class Thermometer {
 
     private Temperature temperature;
 
-    Thermometer() throws OutOfBoundsThermometerException {
+    Thermometer() throws OutOfBoundsThermometerException, IllegalTemperatureException {
         setTemperature(new Temperature(TemperatureRange.MIN.getValue()));
     }
 
-    Thermometer(String temperature) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException {
+    Thermometer(String temperature) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException, IllegalTemperatureException {
         setTemperature(new Temperature(temperature));
     }
 
@@ -71,8 +71,9 @@ public class Thermometer {
         throw new IllegalUnitOfTemperatureException(unit.name());
     }
 
-    public Temperature delta(String delta) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException {
-        return getTemperature().delta(delta);
+    public Temperature delta(String delta) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException, IllegalTemperatureException {
+        temperature = getTemperature().delta(delta);
+        return temperature;
     }
 
     @Override

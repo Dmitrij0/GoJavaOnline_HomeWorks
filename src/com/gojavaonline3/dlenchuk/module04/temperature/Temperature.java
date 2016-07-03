@@ -28,15 +28,15 @@ public class Temperature implements Comparable {
 
     private double kelvinT;
 
-    Temperature() {
+    Temperature() throws IllegalTemperatureException {
         setKelvinT(0);
     }
 
-    Temperature(double kelvinT) {
+    Temperature(double kelvinT) throws IllegalTemperatureException {
         setKelvinT(kelvinT);
     }
 
-    Temperature(String temperature) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException {
+    Temperature(String temperature) throws IllegalUnitOfTemperatureException, IllegalTemperatureException {
         setKelvinT(parseTemperature(temperature));
     }
 
@@ -44,11 +44,14 @@ public class Temperature implements Comparable {
         return kelvinT;
     }
 
-    public void setKelvinT(double kelvinT) {
+    public void setKelvinT(double kelvinT) throws IllegalTemperatureException {
+        if (kelvinT < 0) {
+            throw new IllegalTemperatureException(String.valueOf(kelvinT));
+        }
         this.kelvinT = kelvinT;
     }
 
-    public Temperature delta(String delta) throws IllegalUnitOfTemperatureException, OutOfBoundsThermometerException {
+    public Temperature delta(String delta) throws IllegalUnitOfTemperatureException, IllegalTemperatureException {
         delta = delta.trim();
         Units unit = parseUnits(delta);
         double value = Double.valueOf(delta.substring(0, delta.length() - 1));
@@ -138,5 +141,22 @@ public class Temperature implements Comparable {
         Temperature that = (Temperature) obj;
 
         return (int) (this.kelvinT - that.kelvinT);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Temperature that = (Temperature) o;
+
+        return Double.compare(that.kelvinT, kelvinT) == 0;
+
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(kelvinT);
+        return (int) (temp ^ (temp >>> 32));
     }
 }

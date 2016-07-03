@@ -9,7 +9,8 @@ import static com.gojavaonline3.dlenchuk.module04.temperature.Temperature.Units.
  * Class ThermometerRunner
  */
 public class ThermometerRunner {
-    public static void main(String[] args) throws OutOfBoundsThermometerException, IllegalUnitOfTemperatureException {
+    public static void main(String[] args) throws OutOfBoundsThermometerException, IllegalUnitOfTemperatureException,
+            IllegalTemperatureException {
 
         Thermometer thermometer1 = new Thermometer();
         System.out.println("thermometer1: " + thermometer1);
