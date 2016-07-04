@@ -26,7 +26,10 @@ public class CaesarReaderTest {
 
     @Test
     public void read() throws Exception {
-
+        char[] string = new char[ORIGINAL_STRING.length()];
+        int stringLength = caesarReader.read(string);
+        assertEquals(DECODED_STRING.length(), stringLength);
+        assertEquals(DECODED_STRING, String.valueOf(string));
     }
 
 }
