@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.BufferedWriter;
 import java.io.StringWriter;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class CaesarWriterTest {
     @Before
     public void setUp() throws Exception {
         stringWriter = new StringWriter(ORIGINAL_STRING.length());
-        caesarWriter = new CaesarWriter(new BufferedWriter(stringWriter), SHIFT);
+        caesarWriter = new CaesarWriter(stringWriter, SHIFT);
     }
 
     @After
@@ -33,7 +34,7 @@ public class CaesarWriterTest {
     public void write() throws Exception {
         caesarWriter.write(ORIGINAL_STRING, 0, ORIGINAL_STRING.length());
         caesarWriter.flush();
-//        assertEquals(ENCODED_STRING, stringWriter.toString());
+        assertEquals(ENCODED_STRING, stringWriter.toString());
     }
 
     @Test

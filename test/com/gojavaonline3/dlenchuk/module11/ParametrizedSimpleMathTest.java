@@ -1,6 +1,5 @@
 package com.gojavaonline3.dlenchuk.module11;
 
-import com.gojavaonline3.dlenchuk.module11.SimpleMath;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

@@ -4,21 +4,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 import static org.junit.Assert.*;
 
 public class CaesarReaderTest {
 
-    private CaesarWriter caesarWriter;
-    private StringWriter stringWriter;
+    private CaesarReader caesarReader;
+    private StringReader stringReader;
 
     private final int SHIFT = 5;
+    private final String ORIGINAL_STRING = "Ymnx nx twnlnsfq xywnsl. 6789012345 nx szrgjwx.";
+    private final String DECODED_STRING = "This is original string. 1234567890 is numbers.";
 
     @Before
     public void setUp() throws Exception {
-        stringWriter = new StringWriter();
-        caesarWriter = new CaesarWriter(new BufferedWriter(new StringWriter()), SHIFT);
+        stringReader = new StringReader(ORIGINAL_STRING);
+        caesarReader = new CaesarReader(stringReader, SHIFT);
     }
 
     @Test
