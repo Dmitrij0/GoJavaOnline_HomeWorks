@@ -12,6 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 @RunWith(value = Parameterized.class)
 public class ParametrizedSimpleMathTest {
 
+    private static final SimpleMath simpleMath = new SimpleMath();
     private int numberA;
     private int numberB;
     private int expected;
@@ -22,7 +23,7 @@ public class ParametrizedSimpleMathTest {
         this.expected = expected;
     }
 
-    @Parameterized.Parameters(name = "[index]: multiply([0]*[1])=[2]")
+    @Parameterized.Parameters(name = "{index}: multiply({0}*{1})={2}")
     public static Iterable<Object[]> data1() {
         return Arrays.asList(new Object[][]{
                 {1, 1, 1},
@@ -34,6 +35,6 @@ public class ParametrizedSimpleMathTest {
 
     @Test
     public void testMult() {
-        assertEquals(expected, new SimpleMath().mult(numberA, numberB));
+        assertEquals(expected, simpleMath.mult(numberA, numberB));
     }
 }
