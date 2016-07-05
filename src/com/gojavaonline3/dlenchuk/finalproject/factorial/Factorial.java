@@ -32,6 +32,9 @@ public class Factorial {
         if (calculated) {
             return factorial;
         }
+        if (argument < 1) {
+            throw new IllegalArgumentException("The argument must be greater then '0'. The argument is '" + argument + '\'');
+        }
         if (argument > MAX_NUMBER_OF_FACTORIAL_ARGUMENT) {
             throw new IllegalArgumentException("Argument of calculate function must be less or equals " +
                     MAX_NUMBER_OF_FACTORIAL_ARGUMENT);
