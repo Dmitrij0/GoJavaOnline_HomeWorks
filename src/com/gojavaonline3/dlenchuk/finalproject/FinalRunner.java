@@ -3,8 +3,6 @@ package com.gojavaonline3.dlenchuk.finalproject;
 import com.gojavaonline3.dlenchuk.finalproject.factorial.Factorial;
 import com.gojavaonline3.dlenchuk.finalproject.factorial.Fibonacci;
 
-import java.math.BigInteger;
-
 public class FinalRunner {
 
     public static void main(String[] args) {
