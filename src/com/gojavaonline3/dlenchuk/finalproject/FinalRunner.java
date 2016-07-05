@@ -14,7 +14,7 @@ public class FinalRunner {
         System.out.println(factorial);
 
 
-        Fibonacci fibonacci = new Fibonacci(100, true);
+        Fibonacci fibonacci = new Fibonacci(0, true);
         timePoint = System.nanoTime();
         fibonacci.calculate();
         System.out.println("Elapsed Time: " + (System.nanoTime() - timePoint) / 1_000_000 + "ms");

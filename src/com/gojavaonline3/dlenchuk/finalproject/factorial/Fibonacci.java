@@ -1,12 +1,13 @@
 package com.gojavaonline3.dlenchuk.finalproject.factorial;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Fibonacci {
 
     public final int MAX_NUMBER_OF_FIBONACCI = 1000;
 
-    private long[] list;
+    private Long[] list;
     private int count;
     private boolean leadZero;
 
@@ -34,7 +35,7 @@ public class Fibonacci {
                     "\'. The count is '" + count + '\'');
         }
         calculated = false;
-        list = new long[this.count = count];
+        list = new Long[this.count = count];
     }
 
     public boolean isLeadZero() {
@@ -45,7 +46,7 @@ public class Fibonacci {
         if (this.leadZero != leadZero) {
             this.leadZero = leadZero;
             calculated = false;
-            list = new long[count];
+            list = new Long[count];
         }
     }
 
@@ -61,6 +62,10 @@ public class Fibonacci {
             list[i] = i == 0 ? leadZero ? 0 : 1 : i == 1 ? 1 : list[i - 2] + list[i - 1];
         }
         calculated = true;
+    }
+
+    public Long[] list() {
+        return list;
     }
 
     @Override
