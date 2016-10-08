@@ -75,7 +75,9 @@ class CaesarReader extends Reader {
         synchronized (lock) {
             ensureOpen();
             int countChar = in.read(cbuf, off, len);
-            caesar.execute(CaesarDecoder::transform, cbuf);
+            if (countChar > 0) {
+                caesar.execute(CaesarDecoder::transform, cbuf);
+            }
             return countChar;
         }
     }

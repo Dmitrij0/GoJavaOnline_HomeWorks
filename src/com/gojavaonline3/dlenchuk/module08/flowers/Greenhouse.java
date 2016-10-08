@@ -72,7 +72,7 @@ public class Greenhouse {
      * @param rosebush The rosebush
      * @param countOfRosebushes Count of rosebushes will be cloned from <tt>rosebush</tt>
      * */
-    public void add(Rosebush rosebush, int countOfRosebushes) throws CloneNotSupportedException {
+    public void add(Rosebush rosebush, int countOfRosebushes) {
         for (int i = 0; i < countOfRosebushes; i++) {
             rosebushes.add(rosebush.transplant());
         }
